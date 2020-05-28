@@ -1,29 +1,40 @@
 package com.example.mvp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.mvp.mvp.MainContract;
-import com.example.mvp.mvp.presenter.MainPresenter;
+import com.example.mvp.mvp.V2.MainContract;
+import com.example.mvp.mvp.V2.BaseActivity;
+import com.example.mvp.mvp.V2.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity implements MainContract.IMainView {
+import androidx.annotation.Nullable;
 
-    private MainPresenter mainPresenter;
+public class MainActivity extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
+
     private TextView showText;
     private AlertDialog alertDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initLayout(@Nullable Bundle saveInstanceState) {
         setContentView(R.layout.activity_main);
-        mainPresenter = new MainPresenter(this);
-        AlertDialog.Builder  dialog = new AlertDialog.Builder(this);
+    }
+
+    @Override
+    protected void initViews() {
+        showText = $(R.id.showText);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         alertDialog = dialog.create();
-        mainPresenter.handlerData();
-        showText = (TextView) findViewById(R.id.showText);
+    }
+
+    @Override
+    protected void initData() {
+        mPresenter.handlerData();
+    }
+
+    @Override
+    protected MainContract.IMainPresenter setPresenter() {
+        return new MainPresenter();
     }
 
     @Override
