@@ -23,13 +23,14 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView> impleme
     @Override
     public void detech() {
         super.detech();
+        //用来释放内存 关闭网络请求 关闭线程操作
     }
 
     @Override
     public void handlerData() {
-        if(mView!=null){
-            mView.showDialog();
-        }
+//        if(getView()!=null){  //使用了动态代理后 可以减少繁琐的非空判断
+            getView().showDialog();
+//        }
         mModel.requestBaidu(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -37,10 +38,9 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView> impleme
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(mView!=null) {
-                    mView.success(response.body().string());
-                }
-
+//                if(getView()!=null) {
+                    getView().success(response.body().string());
+//                }
             }
         });
     }

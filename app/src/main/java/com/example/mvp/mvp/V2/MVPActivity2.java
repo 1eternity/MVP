@@ -1,16 +1,15 @@
-package com.example.mvp;
+package com.example.mvp.mvp.V2;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.mvp.mvp.V2.MainContract;
-import com.example.mvp.mvp.V2.BaseActivity;
+import com.example.mvp.R;
 import com.example.mvp.mvp.V2.presenter.MainPresenter;
 
 import androidx.annotation.Nullable;
 
-public class MainActivity extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
+public class MVPActivity2 extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
 
     private TextView showText;
     private AlertDialog alertDialog;
