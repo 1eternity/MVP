@@ -12,13 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".mvp.V1.MVPActivity1">
+        </activity>
+        <activity android:name=".mvp.V2.MVPActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.V2.MVPActivity2"/>
+        <activity android:name=".mvp.V3.MVPActivity3">
+
+        </activity>
     </application>
 
 </manifest>

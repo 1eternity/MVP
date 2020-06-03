@@ -1,21 +1,18 @@
-package com.example.mvp.mvp.V2;
+package com.example.mvp.mvp.V3;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.mvp.R;
-import com.example.mvp.mvp.V2.presenter.MainPresenter;
+import com.example.mvp.mvp.V3.presenter.MainPresenter;
 
 import androidx.annotation.Nullable;
 
-public class MVPActivity2 extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
+public class MVPActivity3 extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
 
     private TextView showText;
     private AlertDialog alertDialog;
-
-    @InjectPresenter
-    MainPresenter mPresenter;
 
     @Override
     protected void initLayout(@Nullable Bundle saveInstanceState) {
@@ -36,8 +33,7 @@ public class MVPActivity2 extends BaseActivity<MainContract.IMainPresenter> impl
 
     @Override
     protected MainContract.IMainPresenter setPresenter() {
-//        return new MainPresenter();
-        return null;
+        return new MainPresenter();
     }
 
     @Override
