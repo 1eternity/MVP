@@ -48,7 +48,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     protected void onDestroy() {
         super.onDestroy();
         //解绑 避免内存泄露
-        mPresenter.detech();
+        mPresenter.detach();
         mPresenter = null;
     }
 }
