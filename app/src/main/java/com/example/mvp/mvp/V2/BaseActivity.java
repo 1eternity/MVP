@@ -76,11 +76,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         super.onDestroy();
         //解绑 避免内存泄露
         if(mPresenter!=null) {
-            mPresenter.detech();
+            mPresenter.detach();
             mPresenter = null;
         }
         for (BasePresenter mInjectPresenter : mInjectPresenters) {
-            mInjectPresenter.detech();
+            mInjectPresenter.detach();
         }
         mInjectPresenters.clear();
         mInjectPresenters=null;
