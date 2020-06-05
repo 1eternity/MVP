@@ -10,6 +10,7 @@ import com.example.mvp.R;
 import javax.inject.Inject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.OkHttpClient;
 
 public class DaggerActivity extends AppCompatActivity {
     private static final String TAG = "_DaggerActivity";
@@ -23,6 +24,7 @@ public class DaggerActivity extends AppCompatActivity {
 //    GangJing gangJing;
 //    @Inject
 //    SellMoe sellMoe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,6 @@ public class DaggerActivity extends AppCompatActivity {
 //        DaggerMainComponent.builder().build().inject(this);
 //        DaggerMainComponent.builder().mainModuld(new MainModuld(this)).build().inject(this);
 
-//        Log.i(TAG, "person: "+person+"--person1: "+person1);
         TextView showText = findViewById(R.id.showText);
 //        showText.setText(gangJing.lookAtHim());
 //        gangJing.gang(this);

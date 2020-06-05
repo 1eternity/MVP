@@ -16,7 +16,7 @@ public class SellMoe {
     public int id;
 
     @Inject
-    public SellMoe(){
+    public SellMoe() {
 
     }
 

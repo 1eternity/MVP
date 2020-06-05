@@ -11,10 +11,9 @@ import dagger.Component;
  * Time:17:26
  * author:liguoqiang
  */
-@Component(modules = {OkhttpModule.class, SellMoe.class, GangJing.class})
-@Singleton
+@Component(modules = SellModeModule.class)
 public interface MainComponent {
-    //    void inject(DaggerActivity activity);
-    void inject(BaseApplication baseApplication);
+        void inject(DaggerActivity activity);
+//    void inject(BaseApplication baseApplication);
 
 }
