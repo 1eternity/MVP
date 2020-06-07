@@ -5,6 +5,9 @@ package com.example.mvp.mvp.V3;
 import com.example.mvp.mvp.V3.baseMVP.IBasePresenter;
 import com.example.mvp.mvp.V3.baseMVP.IBaseView;
 
+import javax.inject.Inject;
+
+import dagger.Module;
 import okhttp3.Callback;
 
 public interface MainContract {

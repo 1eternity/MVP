@@ -9,10 +9,11 @@ import com.example.mvp.mvp.V3.presenter.MainPresenter;
 
 import androidx.annotation.Nullable;
 
-public class MVPActivity3 extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
+public class MVPActivity3 extends BaseActivity<MainPresenter> implements MainContract.IMainView {
 
     private TextView showText;
     private AlertDialog alertDialog;
+
 
     @Override
     protected void initLayout(@Nullable Bundle saveInstanceState) {
@@ -31,9 +32,15 @@ public class MVPActivity3 extends BaseActivity<MainContract.IMainPresenter> impl
         mPresenter.handlerData();
     }
 
+//    @Override
+//    protected MainContract.IMainPresenter setPresenter() {
+////        return new MainPresenter();
+//        return null;
+//    }
+
     @Override
-    protected MainContract.IMainPresenter setPresenter() {
-        return new MainPresenter();
+    protected void initInJect() {
+        getActivityComponent().inject(this);
     }
 
     @Override

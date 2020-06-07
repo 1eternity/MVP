@@ -32,6 +32,7 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView, DataMod
         getModel().requestBaidu(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+
             }
 
             @Override

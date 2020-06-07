@@ -1,5 +1,7 @@
 package com.example.mvp.mvp.V3.presenter;
 
+import android.util.Log;
+
 import com.example.mvp.mvp.V3.MainContract;
 import com.example.mvp.mvp.V3.baseMVP.BasePresenter;
 import com.example.mvp.mvp.V3.baseMVP.IBaseView;
@@ -7,13 +9,25 @@ import com.example.mvp.mvp.V3.model.DataModel;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
+
+import dagger.Module;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class MainPresenter extends BasePresenter<MainContract.IMainView> implements MainContract.IMainPresenter {
 
+public class MainPresenter extends BasePresenter<MainContract.IMainView> implements MainContract.IMainPresenter {
+    private static final String TAG = "MainPresenter";
     private MainContract.IMainModel mModel;
+
+//    private IBaseView view;
+    @Inject
+    public MainPresenter(){
+        Log.i(TAG, "MainPresenter: ");
+//        this.view=view;
+    }
+
     @Override
     public void attach(IBaseView view) {
         super.attach(view);

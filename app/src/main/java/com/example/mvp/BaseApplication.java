@@ -1,28 +1,21 @@
 package com.example.mvp;
 
 import android.app.Application;
-import android.util.Log;
 
-
-
-import java.io.IOException;
 
 import javax.inject.Inject;
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class BaseApplication extends Application {
 
     @Inject
     OkHttpClient okHttpClient;
-
+    private static BaseApplication instance;
     @Override
     public void onCreate() {
         super.onCreate();
+        instance=this;
 //        DaggerMainComponent.create().inject(this);
         /**
          以下为OkHttp使用，与Dagger2无关
@@ -41,4 +34,9 @@ public class BaseApplication extends Application {
 //        });
 
     }
+//    public static AppComponent getAppComponent(){
+//        return DaggerAppComponent.builder()
+//                .appModule(new AppModule(instance))
+//                .build();
+//    }
 }
