@@ -4,7 +4,6 @@ import android.app.Application;
 import android.util.Log;
 
 
-import com.example.mvp.Dragger.DaggerMainComponent;
 
 import java.io.IOException;
 

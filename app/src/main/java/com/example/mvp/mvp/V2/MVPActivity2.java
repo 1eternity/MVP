@@ -9,6 +9,8 @@ import com.example.mvp.mvp.V2.presenter.MainPresenter;
 
 import androidx.annotation.Nullable;
 
+
+
 public class MVPActivity2 extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView {
 
     private TextView showText;

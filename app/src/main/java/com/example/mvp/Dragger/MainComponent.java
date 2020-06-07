@@ -13,7 +13,7 @@ import dagger.Component;
  */
 @Component(modules = SellModeModule.class)
 public interface MainComponent {
-        void inject(DaggerActivity activity);
+//        void inject(DaggerActivity activity);
 //    void inject(BaseApplication baseApplication);
 
 }

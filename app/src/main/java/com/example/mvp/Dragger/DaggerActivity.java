@@ -2,15 +2,17 @@ package com.example.mvp.Dragger;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
+import com.example.mvp.Dragger.work1.Counter;
+import com.example.mvp.Dragger.work1.CounterModule;
+import com.example.mvp.Dragger.work1.DaggerCounterComponent;
 import com.example.mvp.R;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import androidx.appcompat.app.AppCompatActivity;
-import okhttp3.OkHttpClient;
 
 public class DaggerActivity extends AppCompatActivity {
     private static final String TAG = "_DaggerActivity";
@@ -25,6 +27,20 @@ public class DaggerActivity extends AppCompatActivity {
 //    @Inject
 //    SellMoe sellMoe;
 
+    //    @Inject
+//    SellMoe sellMoe;
+//    @Inject
+//    HaHa haha;
+//    @Inject
+//    HaHa haha1;
+
+    @Named("current")
+    @Inject
+    Counter counter;
+    @Named("total")
+    @Inject
+    Counter totalCounter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +51,13 @@ public class DaggerActivity extends AppCompatActivity {
 //        DaggerMainComponent.builder().build().inject(this);
 //        DaggerMainComponent.builder().mainModuld(new MainModuld(this)).build().inject(this);
 
+//        DaggerMainComponent.builder().sellModeModule(new SellModeModule(20)).build().inject(this);
+//        DaggerHaHaComponent.builder().haHaModule(new HaHaModule(25)).build().inject(this);
+        DaggerCounterComponent.builder().counterModule(new CounterModule(10)).build().inject(this);
         TextView showText = findViewById(R.id.showText);
-//        showText.setText(gangJing.lookAtHim());
+        showText.setText(counter.getSum() + "----" + totalCounter.getSum());
+        Log.i(TAG, "onCreate: haha=" + counter.getSum() + "--haha1=" + totalCounter.getSum());
+
 //        gangJing.gang(this);
 //
 //        sellMoe.id=1;

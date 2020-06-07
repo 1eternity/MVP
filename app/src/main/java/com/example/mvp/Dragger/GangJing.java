@@ -23,8 +23,8 @@ public class GangJing {
         this.sellMoe=sellMoe;
     }
     public String lookAtHim(){
-        sellMoe.id=2;
-        Log.i(TAG, "lookAtHim: "+sellMoe.id);
+        sellMoe.age=2;
+        Log.i(TAG, "lookAtHim: "+sellMoe.age);
         return sellMoe.sellMoe();
     }
     public void gang(Context context){

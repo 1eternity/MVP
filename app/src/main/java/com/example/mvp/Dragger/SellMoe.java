@@ -13,14 +13,14 @@ import dagger.Module;
 @Module
 public class SellMoe {
 
-    public int id;
+    public int age;
 
     @Inject
-    public SellMoe() {
-
+    public SellMoe(int age) {
+        this.age=age;
     }
 
     public String sellMoe() {
-        return "赶紧卖了个大萌";
+        return "我特么" + age + "岁了还是可爱得要死";
     }
 }
