@@ -1,4 +1,4 @@
-package com.example.mvp.mvp.V3;
+package com.example.mvp.mvp.V3.baseMVP;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,8 +7,12 @@ import android.view.View;
 import com.example.mvp.mvp.V3.Dagger2.Component.ActivityComponent;
 import com.example.mvp.mvp.V3.Dagger2.Component.DaggerActivityComponent;
 import com.example.mvp.mvp.V3.Dagger2.module.ActivityModule;
+import com.example.mvp.mvp.V3.baseMVP.BasePresenter;
 import com.example.mvp.mvp.V3.baseMVP.IBasePresenter;
 import com.example.mvp.mvp.V3.baseMVP.IBaseView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -17,10 +21,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import dagger.Module;
 
-public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements IBaseView {
+public abstract class BaseActivity/*<P extends IBasePresenter>*/ extends AppCompatActivity implements IBaseView {
 
-    @Inject
-    protected P mPresenter;
+    //    @Inject
+//    protected P mPresenter;
+    private List<BasePresenter> presenterList = new ArrayList<>();
 
     protected abstract void initLayout(@Nullable Bundle saveInstanceState);
 
@@ -28,7 +33,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
 
     protected abstract void initData();
 
-//    protected abstract P setPresenter();
+    protected abstract List<BasePresenter> setPresenter(List<BasePresenter> presenterList);
 
     protected <T extends View> T $(@IdRes int viewId) {
         return findViewById(viewId);
@@ -40,9 +45,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         super.onCreate(savedInstanceState);
         initLayout(savedInstanceState);
         initInJect();
-//        mPresenter = setPresenter();
-        if (mPresenter != null) {
-            mPresenter.attach(this);
+        presenterList = setPresenter(presenterList);
+        for (BasePresenter basePresenter : presenterList) {
+            if (basePresenter != null) {
+                basePresenter.attach(this);
+            }
         }
         initViews();
         initData();
@@ -50,13 +57,13 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
 
     protected abstract void initInJect();
 
-    protected ActivityComponent getActivityComponent(){
-        return  DaggerActivityComponent.builder()
+    protected ActivityComponent getActivityComponent() {
+        return DaggerActivityComponent.builder()
                 .activityModule(getActivityModule())
                 .build();
     }
 
-    protected ActivityModule getActivityModule(){
+    protected ActivityModule getActivityModule() {
         return new ActivityModule(this);
     }
 
@@ -70,9 +77,16 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     protected void onDestroy() {
         super.onDestroy();
         //解绑 避免内存泄露
-        if (mPresenter != null) {
-            mPresenter.detech();
+//        if (mPresenter != null) {
+//            mPresenter.detech();
+//        }
+//        mPresenter = null;
+        for (BasePresenter basePresenter : presenterList) {
+            if (basePresenter != null) {
+                basePresenter.detech();
+            }
         }
-        mPresenter = null;
+        presenterList.clear();
+        presenterList = null;
     }
 }

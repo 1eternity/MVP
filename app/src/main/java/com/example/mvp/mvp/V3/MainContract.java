@@ -19,6 +19,7 @@ public interface MainContract {
         void showDialog();
 
         void success(String connect);
+        void tendSuccess(String coooect);
     }
 
     interface IMainPresenter extends IBasePresenter {

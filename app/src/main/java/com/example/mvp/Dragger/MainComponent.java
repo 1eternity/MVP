@@ -15,5 +15,4 @@ import dagger.Component;
 public interface MainComponent {
 //        void inject(DaggerActivity activity);
 //    void inject(BaseApplication baseApplication);
-
 }

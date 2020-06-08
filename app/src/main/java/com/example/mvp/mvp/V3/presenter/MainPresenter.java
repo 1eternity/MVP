@@ -17,9 +17,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class MainPresenter extends BasePresenter<MainContract.IMainView> implements MainContract.IMainPresenter {
+public class MainPresenter extends BasePresenter<MainContract.IMainView,DataModel> implements MainContract.IMainPresenter {
     private static final String TAG = "MainPresenter";
-    private MainContract.IMainModel mModel;
 
 //    private IBaseView view;
     @Inject
@@ -27,13 +26,6 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView> impleme
         Log.i(TAG, "MainPresenter: ");
 //        this.view=view;
     }
-
-    @Override
-    public void attach(IBaseView view) {
-        super.attach(view);
-        mModel = new DataModel();
-    }
-
     @Override
     public void detech() {
         super.detech();
@@ -45,7 +37,7 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView> impleme
 //        if(getView()!=null){  //使用了动态代理后 可以减少繁琐的非空判断
             getView().showDialog();
 //        }
-        mModel.requestBaidu(new Callback() {
+        getModel().requestBaidu(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
             }
