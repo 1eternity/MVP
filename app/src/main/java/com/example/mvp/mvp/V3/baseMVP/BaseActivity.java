@@ -25,7 +25,7 @@ public abstract class BaseActivity/*<P extends IBasePresenter>*/ extends AppComp
 
     //    @Inject
 //    protected P mPresenter;
-    private List<BasePresenter> presenterList = new ArrayList<>();
+    private List<BasePresenter> presenterList;
 
     protected abstract void initLayout(@Nullable Bundle saveInstanceState);
 
@@ -44,6 +44,7 @@ public abstract class BaseActivity/*<P extends IBasePresenter>*/ extends AppComp
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initLayout(savedInstanceState);
+        presenterList=new ArrayList<>();
         initInJect();
         presenterList = setPresenter(presenterList);
         for (BasePresenter basePresenter : presenterList) {

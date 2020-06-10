@@ -25,7 +25,7 @@ import androidx.fragment.app.Fragment;
  */
 public abstract class BaseFragment extends Fragment implements IBaseView {
 
-    private List<BasePresenter> presenterList = new ArrayList<>();
+    private List<BasePresenter> presenterList ;
 
 
     protected abstract void initViews(@Nullable Bundle savedInstanceState);
@@ -47,6 +47,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(setLayout(), container, false);
         initInject();
+        presenterList=new ArrayList<>();
         presenterList = setPresenter(presenterList);
         for (BasePresenter basePresenter : presenterList) {
             if (basePresenter != null) {
@@ -72,7 +73,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         initViews(savedInstanceState);
         initData();
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
