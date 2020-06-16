@@ -7,10 +7,11 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".customView.ViewMeasureActivity">
-    <Button
+    <com.example.mvp.customView.CustomButton
+        android:background="#CCC"
         android:layout_marginTop="1dp"
         android:layout_marginLeft="1dp"
         android:id="@+id/btnView"
-        android:layout_width="300dp"
-        android:layout_height="500dp" />
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 </LinearLayout>

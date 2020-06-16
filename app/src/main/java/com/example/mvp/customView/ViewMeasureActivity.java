@@ -2,6 +2,7 @@ package com.example.mvp.customView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -16,13 +17,14 @@ import com.example.mvp.utils.DisplayUtil;
 
 public class ViewMeasureActivity extends AppCompatActivity {
     private static final String TAG = "_ViewMeasureActivity";
-    private Button btnView;
+    private CustomButton btnView;
     private LinearLayout absoluteLayout;
     private int x, lastX;
     private int y, lastY;
     private int rawX;
     private int rawY;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,65 +64,67 @@ public class ViewMeasureActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i(TAG, "onClick: getX=" + view.getX());
                 Log.i(TAG, "onClick: getY=" + view.getY());
+//                btnView.smoothScrollTo(400,0);
+                btnView.smoothScrollTo1();
             }
         });
-
-        btnView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                x = (int) motionEvent.getX();
-                y = (int) motionEvent.getY();
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        lastX = (int) motionEvent.getX();
-                        lastY = (int) motionEvent.getY();
-                        Log.i(TAG, "onTouch_down: lastX=" + lastX);
-                        Log.i(TAG, "onTouch_down: lastY=" + lastY);
-//                        rawX = (int) motionEvent.getRawX();
-//                        rawY = (int) motionEvent.getRawY();
-//                        Log.i(TAG, "onTouch_down: getRawX=" + rawX);
-//                        Log.i(TAG, "onTouch_down: getRawY=" + rawY);
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-//                        x = (int) motionEvent.getX();
-//                        y = (int) motionEvent.getY();
-//                        Log.i(TAG, "onTouch_move: getX=" + x);
-//                        Log.i(TAG, "onTouch_move: getY=" + y);
-                        int offsetX = x - lastX;
-                        int offsetY = y - lastY;
-                        Log.i(TAG, "onTouch: offsetX=" + x + "-" + lastX + "=" + offsetX);
-                        Log.i(TAG, "onTouch: offsetY=" + y + "-" + lastY + "=" + offsetY);
-//                        rawX = motionEvent.getRawX();
-//                        rawY = motionEvent.getRawY();
-//                        Log.i(TAG, "onTouch_move: getRawX=" + rawX);
-//                        Log.i(TAG, "onTouch_move: getRawY=" + rawY);
-//                        view.layout(view.getLeft()+offsetX,view.getTop()+offsetY,view.getRight()+offsetX,view.getBottom()+offsetY);
-//                        view.offsetLeftAndRight(offsetX);
-//                        view.offsetTopAndBottom(offsetY);
-//                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) view.getLayoutParams();
-//                        layoutParams.leftMargin=view.getLeft()+offsetX;
-//                        layoutParams.topMargin=view.getTop()+offsetY;
-//                        view.setLayoutParams(layoutParams);
-//                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-//                        layoutParams.leftMargin = view.getLeft() + offsetX;
-//                        layoutParams.topMargin = view.getTop() + offsetY;
-//                        view.setLayoutParams(layoutParams);
-
-                        break;
-                    case MotionEvent.ACTION_UP:
-//                        x = (int) motionEvent.getX();
-//                        y = (int) motionEvent.getY();
-//                        Log.i(TAG, "onTouch_up: getX=" + x);
-//                        Log.i(TAG, "onTouch_up: getY=" + y);
-//                        rawX = (int) motionEvent.getRawX();
-//                        rawY = (int) motionEvent.getRawY();
-//                        Log.i(TAG, "onTouch_up: getRawX=" + rawX);
-//                        Log.i(TAG, "onTouch_up: getRawY=" + rawY);
-                        break;
-                }
-                return false;
-            }
-        });
+//        btnView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                x = (int) motionEvent.getX();
+//                y = (int) motionEvent.getY();
+//                switch (motionEvent.getAction()) {
+//                    case MotionEvent.ACTION_DOWN:
+//                        lastX = (int) motionEvent.getX();
+//                        lastY = (int) motionEvent.getY();
+//                        Log.i(TAG, "onTouch_down: lastX=" + lastX);
+//                        Log.i(TAG, "onTouch_down: lastY=" + lastY);
+////                        rawX = (int) motionEvent.getRawX();
+////                        rawY = (int) motionEvent.getRawY();
+////                        Log.i(TAG, "onTouch_down: getRawX=" + rawX);
+////                        Log.i(TAG, "onTouch_down: getRawY=" + rawY);
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+////                        x = (int) motionEvent.getX();
+////                        y = (int) motionEvent.getY();
+////                        Log.i(TAG, "onTouch_move: getX=" + x);
+////                        Log.i(TAG, "onTouch_move: getY=" + y);
+//                        int offsetX = x - lastX;
+//                        int offsetY = y - lastY;
+//                        Log.i(TAG, "onTouch: offsetX=" + x + "-" + lastX + "=" + offsetX);
+//                        Log.i(TAG, "onTouch: offsetY=" + y + "-" + lastY + "=" + offsetY);
+////                        rawX = motionEvent.getRawX();
+////                        rawY = motionEvent.getRawY();
+////                        Log.i(TAG, "onTouch_move: getRawX=" + rawX);
+////                        Log.i(TAG, "onTouch_move: getRawY=" + rawY);
+////                        view.layout(view.getLeft()+offsetX,view.getTop()+offsetY,view.getRight()+offsetX,view.getBottom()+offsetY);
+////                        view.offsetLeftAndRight(offsetX);
+////                        view.offsetTopAndBottom(offsetY);
+////                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) view.getLayoutParams();
+////                        layoutParams.leftMargin=view.getLeft()+offsetX;
+////                        layoutParams.topMargin=view.getTop()+offsetY;
+////                        view.setLayoutParams(layoutParams);
+////                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+////                        layoutParams.leftMargin = view.getLeft() + offsetX;
+////                        layoutParams.topMargin = view.getTop() + offsetY;
+////                        view.setLayoutParams(layoutParams);
+//                        view.scrollBy(-offsetX,-offsetY);
+//
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+////                        x = (int) motionEvent.getX();
+////                        y = (int) motionEvent.getY();
+////                        Log.i(TAG, "onTouch_up: getX=" + x);
+////                        Log.i(TAG, "onTouch_up: getY=" + y);
+////                        rawX = (int) motionEvent.getRawX();
+////                        rawY = (int) motionEvent.getRawY();
+////                        Log.i(TAG, "onTouch_up: getRawX=" + rawX);
+////                        Log.i(TAG, "onTouch_up: getRawY=" + rawY);
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
 
     }
 }
