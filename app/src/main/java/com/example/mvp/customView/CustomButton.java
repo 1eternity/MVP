@@ -3,6 +3,7 @@ package com.example.mvp.customView;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Scroller;
@@ -13,7 +14,7 @@ import android.widget.Scroller;
  * author:liguoqiang
  */
 public class CustomButton extends View {
-
+    private static final String TAG = "DispatchingEvents";
     private int lastX;
     private int lastY;
     private Scroller scroller;
@@ -33,6 +34,7 @@ public class CustomButton extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.i(TAG, "onTouchEvent: view");
         int x = (int) event.getX();
         int y = (int) event.getY();
         switch (event.getAction()) {
@@ -70,9 +72,16 @@ public class CustomButton extends View {
         scroller.startScroll(scrollX, 0, delta, 0, 2000);
         invalidate();
     }
-    public void smoothScrollTo1(){
+
+    public void smoothScrollTo1() {
         ObjectAnimator translationX = ObjectAnimator.ofFloat(this, "translationX", 200);
         translationX.setDuration(300);
         translationX.start();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.i(TAG, "dispatchTouchEvent: view");
+        return super.dispatchTouchEvent(event);
     }
 }
