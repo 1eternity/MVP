@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".customView.ViewMeasureActivity">
     <com.example.mvp.customView.TitleBar
         android:id="@+id/titlebar"
@@ -36,5 +35,10 @@
         android:layout_width="50dp"
         app:rect_color="#F00"
         android:layout_height="50dp" />
+
+    <com.example.mvp.customView.CounterView
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
 </LinearLayout>

@@ -8,4 +8,20 @@
         <attr name="title_text_color" format="color"></attr>
         <attr name="title_bg" format="color"></attr>
     </declare-styleable>
+
+    <declare-styleable name="LoopView">
+        <attr name="lineColor" format="color"/>
+        <attr name="topBottomTextColor" format="color"/>
+        <attr name="centerTextColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="canLoop" format="boolean"/>
+        <attr name="initPosition" format="integer"/>
+        <attr name="drawItemCount" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="NumPickView">
+        <attr name="totalNum" format="integer"/>
+        <attr name="showNum" format="integer"/>
+        <attr name="textColor" format="color"/>
+    </declare-styleable>
 </resources>
