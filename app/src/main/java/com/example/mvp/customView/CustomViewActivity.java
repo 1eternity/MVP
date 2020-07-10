@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.widget.ListView;
 
 import com.example.mvp.R;
@@ -42,5 +43,6 @@ public class CustomViewActivity extends AppCompatActivity {
         datePickerView.setArrayList(list);
         datePickerView.setCyclic(true);
         datePickerView.setCanScroll(true);
+
     }
 }

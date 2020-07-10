@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.mvp.utils.DisplayUtil;
+
 /**
  * Date:2020/7/2 0002
  * Time:9:39
@@ -23,13 +25,16 @@ public class PopupView extends View {
     private int mHeight;
     private int mRectHeight;
     private Paint mPaint;
+    private Context mContext;
 
     public PopupView(Context context) {
         super(context);
+        mContext = context;
     }
 
     public PopupView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
         mPaint = new Paint();
     }
 
@@ -46,13 +51,17 @@ public class PopupView extends View {
         if (widthMode == MeasureSpec.EXACTLY) {
             mWidth = widthSize;
             mRectWidth = (int) (mWidth * mRectPercent);
-        }else {
+        } else {
+            mWidth = DisplayUtil.dip2px(mContext, 100);
+            mRectWidth = (int) (mWidth * mRectPercent);
             Log.i(TAG, "onMeasure width: wrap_parent");
         }
         if (heightMode == MeasureSpec.EXACTLY) {
             mHeight = heightSize;
             mRectHeight = (int) (mHeight * mRectPercent + 0.1);
-        }else {
+        } else {
+            mHeight = DisplayUtil.dip2px(mContext, 50);
+            mRectHeight = (int) (mHeight * mRectPercent + 0.1);
             Log.i(TAG, "onMeasure height: wrap_parent");
         }
         setMeasuredDimension(mWidth, mHeight);

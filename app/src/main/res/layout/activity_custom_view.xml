@@ -7,6 +7,7 @@
     tools:context=".customView.CustomViewActivity">
 
     <com.example.mvp.customView.PopupView
+        android:id="@+id/popupView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -42,7 +43,21 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:visibility="gone"
         app:showNum="6"
         app:textColor="#18B071"
         app:totalNum="60"></com.example.mvp.customView.aaa.NumPickView>
+
+    <com.example.mvp.customView.WaveView
+        android:id="@+id/waveView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/popupView" />
+    <com.example.mvp.customView.WaveView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:mode="triangle"
+        app:layout_constraintTop_toBottomOf="@id/waveView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
