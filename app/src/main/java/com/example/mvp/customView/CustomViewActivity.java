@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.mvp.R;
@@ -18,6 +20,7 @@ public class CustomViewActivity extends AppCompatActivity {
     private static final String TAG = "CustomViewActivity";
     private LoopView loopView;
     private DatePickerView datePickerView;
+    private LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,6 @@ public class CustomViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_custom_view);
         loopView = findViewById(R.id.loopView);
         datePickerView = findViewById(R.id.datePickerView);
-
         List<String> list=new ArrayList<>();
         for (int i = 0; i < 24; i++) {
             list.add(""+i);
@@ -43,6 +45,8 @@ public class CustomViewActivity extends AppCompatActivity {
         datePickerView.setArrayList(list);
         datePickerView.setCyclic(true);
         datePickerView.setCanScroll(true);
+
+
 
     }
 }

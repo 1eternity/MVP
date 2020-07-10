@@ -60,4 +60,5 @@
         android:layout_marginTop="20dp"
         app:mode="triangle"
         app:layout_constraintTop_toBottomOf="@id/waveView1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

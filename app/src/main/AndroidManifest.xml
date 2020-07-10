@@ -17,12 +17,11 @@
         <activity android:name=".mvp.V3.MVPActivity3" />
         <activity android:name=".Dragger.DaggerActivity" />
         <activity android:name=".mvp.V3.SecondActivity" />
-        <activity android:name=".customView.ViewMeasureActivity"></activity>
+        <activity android:name=".customView.ViewMeasureActivity" />
         <activity android:name=".customView.DispatchingEventsActivity" />
-        <activity android:name=".customView.MyListViewActivity">
-
-        </activity>
-        <activity android:name=".customView.CustomViewActivity">
+        <activity android:name=".customView.MyListViewActivity"></activity>
+        <activity android:name=".customView.CustomViewActivity"></activity>
+        <activity android:name=".customView.LayoutInflaterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
